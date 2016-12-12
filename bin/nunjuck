@@ -4,4 +4,4 @@
 DIR=${0%/*}
 
 # Call nette tester
-${DIR}/tester --setup ${DIR}/nunjuck-setup.php $@
+${DIR}/tester --setup ${DIR}/nunjuck-setup $@
