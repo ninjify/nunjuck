@@ -1,6 +1,6 @@
 <?php
 
-namespace Ninjify\Tester\OutputHandler;
+namespace Ninjify\Nunjuck\OutputHandler;
 
 use Tester\Dumper;
 use Tester\Runner\Output\ConsolePrinter;

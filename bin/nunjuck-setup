@@ -1,7 +1,10 @@
+#!/usr/bin/env php
 <?php
 
-use Ninjify\Tester\OutputHandler\BetterConsolePrinter;
+use Ninjify\Nunjuck\OutputHandler\BetterConsolePrinter;
 use Tester\Runner\Runner;
+
+require_once __DIR__ . '/../src/OutputHandler/BetterConsolePrinter.php';
 
 /** @var Runner $runner */
 $runner->outputHandlers = [];

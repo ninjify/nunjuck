@@ -1,6 +1,6 @@
 <?php
 
-namespace Ninjify\Tester\TestCase;
+namespace Ninjify\Nunjuck\TestCase;
 
 use Mockista\Registry;
 

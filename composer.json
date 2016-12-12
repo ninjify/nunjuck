@@ -1,10 +1,10 @@
 {
-  "name": "ninjify/tester",
+  "name": "ninjify/nunjuck",
   "description": "Special tuned version of nette/tester for your PHP projects",
   "keywords": ["tester", "php", "nette"],
   "type": "library",
   "license": ["MIT"],
-  "homepage": "https://github.com/ninjify/tester",
+  "homepage": "https://github.com/ninjify/nunjuck",
   "authors": [
     {
       "name": "Milan Felix Sulc",
@@ -29,7 +29,7 @@
   },
   "bin": [
     "bin/nunjuck",
-    "bin/tester-setup.php"
+    "bin/nunjuck-setup"
   ],
   "autoload": {
     "psr-4": {

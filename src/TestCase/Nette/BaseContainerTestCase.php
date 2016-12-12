@@ -1,8 +1,8 @@
 <?php
 
-namespace Ninjify\Tester\TestCase\Nette;
+namespace Ninjify\Nunjuck\TestCase\Nette;
 
-use Ninjify\Tester\TestCase\BaseTestCase;
+use Ninjify\Nunjuck\TestCase\BaseTestCase;
 
 abstract class BaseContainerTestCase extends BaseTestCase
 {

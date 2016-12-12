@@ -1,6 +1,6 @@
 <?php
 
-namespace Ninjify\Tester;
+namespace Ninjify\Nunjuck;
 
 use Nette\Caching\Storages\FileStorage;
 use Nette\Loaders\RobotLoader;

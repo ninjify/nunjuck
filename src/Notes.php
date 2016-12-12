@@ -1,6 +1,6 @@
 <?php
 
-namespace Ninjify\Tester;
+namespace Ninjify\Nunjuck;
 
 final class Notes
 {

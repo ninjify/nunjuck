@@ -1,6 +1,6 @@
 <?php
 
-namespace Ninjify\Tester\TestCase\Nette;
+namespace Ninjify\Nunjuck\TestCase\Nette;
 
 use Nette\DI\Container;
 
