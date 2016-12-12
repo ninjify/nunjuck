@@ -4,8 +4,10 @@ Special tuned [nette/tester](https://github.com/nette/tester) for your PHP proje
 
 -----
 
+[![Build Status](https://img.shields.io/travis/ninjify/tester.svg?style=flat-square)](https://travis-ci.org/ninjify/tester)
 [![Downloads total](https://img.shields.io/packagist/dt/ninjify/tester.svg?style=flat-square)](https://packagist.org/packages/ninjify/tester)
 [![Latest stable](https://img.shields.io/packagist/v/ninjify/tester.svg?style=flat-square)](https://packagist.org/packages/ninjify/tester)
+[![Licence](https://img.shields.io/packagist/l/ninjify/tester.svg?style=flat-square)](https://packagist.org/packages/ninjify/tester)
 
 ## Install
 
