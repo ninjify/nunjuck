@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-tester --setup ./tester-setup.php $@
+# Resolve relative folder
+DIR=${0%/*}
+
+# Call nette tester
+${DIR}/tester --setup ${DIR}/tester-setup.php $@
