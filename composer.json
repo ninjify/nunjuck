@@ -23,10 +23,14 @@
     "janmarek/mockista": "^1.1.0"
   },
   "suggest": {
-    "mockery/mockery": "Allows to use BaseMockeryTestCase",
-    "janmarek/mockista": "Allows to use BaseMockistaTestCase",
-    "nette/di": "Allows to use BaseContainerTestCase"
+    "mockery/mockery": "to use BaseMockeryTestCase",
+    "janmarek/mockista": "to use BaseMockistaTestCase",
+    "nette/di": "to use BaseContainerTestCase"
   },
+  "bin": [
+    "bin/nunjuck",
+    "bin/tester-setup.php"
+  ],
   "autoload": {
     "psr-4": {
       "Ninjify\\Tester\\": "src"
