@@ -13,7 +13,7 @@ class BetterConsolePrinter extends ConsolePrinter
 {
 
 	/**
-	 * Display end of single test
+	 * Display headline of testing
 	 *
 	 * @return void
 	 */
@@ -36,14 +36,14 @@ class BetterConsolePrinter extends ConsolePrinter
 	{
 		$outputs = [
 			Runner::PASSED => Dumper::color('green', '✔ ' . $testName),
-			Runner::SKIPPED => Dumper::color('olive', 's ' . $testName) . "($message)",
+			Runner::SKIPPED => Dumper::color('olive', 's ' . $testName) . '(' . $message . ')',
 			Runner::FAILED => Dumper::color('red', '✖ ' . $testName) . "\n" . $this->indent($message, 3) . "\n",
 		];
 		echo $this->indent($outputs[$result], 2) . PHP_EOL;
 	}
 
 	/**
-	 * Display end of single test
+	 * Display result of testing
 	 *
 	 * @return void
 	 */

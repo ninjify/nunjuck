@@ -62,6 +62,7 @@ class Environment
 	/**
 	 * Configure variables
 	 *
+	 * @param string $dir
 	 * @return void
 	 */
 	public static function setupVariables($dir)
