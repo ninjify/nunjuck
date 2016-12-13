@@ -4,6 +4,7 @@ namespace Ninjify\Nunjuck;
 
 use Nette\Caching\Storages\FileStorage;
 use Nette\Loaders\RobotLoader;
+use RuntimeException;
 use Tester\Environment as TEnvironment;
 use Tester\Helpers as THelpers;
 
@@ -67,8 +68,6 @@ class Environment
 	 */
 	public static function setupVariables($testerDir)
 	{
-		clearstatcache();
-
 		if (!is_dir($testerDir)) {
 			die(sprintf('Provide existing folder, "%s" does not exist.', $testerDir));
 		}
@@ -93,8 +92,13 @@ class Environment
 		ini_set('session.save_path', TEMP_DIR);
 
 		// Create folders
-		self::mkdir(TEMP_DIR);
+		clearstatcache(TRUE, TMP_DIR);
+		self::mkdir(TMP_DIR);
+		clearstatcache(TRUE, CACHE_DIR);
 		self::mkdir(CACHE_DIR);
+		clearstatcache(TRUE, TEMP_DIR);
+		self::mkdir(TEMP_DIR);
+		clearstatcache(TRUE, TEMP_DIR);
 		self::purge(TEMP_DIR);
 	}
 
@@ -154,16 +158,16 @@ class Environment
 
 	/**
 	 * @param string $dir
-	 * @param int $mask
+	 * @param int $mode
 	 * @param bool $recursive
 	 * @return void
 	 */
 	public static function mkdir($dir, $mode = 0777, $recursive = TRUE)
 	{
-		clearstatcache();
-		if (!is_dir($dir) && !@mkdir($dir, $mode, $recursive)) { // @ - dir may already exist
+		if (is_dir($dir) === FALSE && @mkdir($dir, $mode, $recursive) === FALSE) {
+			clearstatcache(TRUE, $dir);
 			$error = error_get_last();
-			if (!is_dir($dir)) {
+			if (is_dir($dir) === FALSE && !file_exists($dir) === FALSE) {
 				throw new RuntimeException("Unable to create directory '$dir'. " . $error['message']);
 			}
 		}
@@ -186,9 +190,7 @@ class Environment
 	 */
 	private static function purge($dir)
 	{
-		if (!is_dir($dir)) {
-			self::mkdir($dir);
-		}
+		if (!is_dir($dir)) self::mkdir($dir);
 		THelpers::purge($dir);
 	}
 
