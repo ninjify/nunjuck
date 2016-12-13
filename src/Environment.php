@@ -62,13 +62,17 @@ class Environment
 	/**
 	 * Configure variables
 	 *
-	 * @param string $dir
+	 * @param string $testerDir
 	 * @return void
 	 */
-	public static function setupVariables($dir)
+	public static function setupVariables($testerDir)
 	{
+		if (!is_dir($testerDir)) {
+			die(sprintf('Provide existing folder, "%s" does not exist.', $testerDir));
+		}
+
 		// Base tester directory
-		define('TESTER_DIR', realpath($dir));
+		define('TESTER_DIR', realpath($testerDir));
 
 		// Application directories
 		define('APP_DIR', realpath(TESTER_DIR . '/../app'));
@@ -82,7 +86,7 @@ class Environment
 
 		// Temp, cache directories
 		define('TMP_DIR', TESTER_DIR . '/tmp');
-		define('TEMP_DIR', TMP_DIR . '/tests/' . lcg_value());
+		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '-' . lcg_value());
 		define('CACHE_DIR', TMP_DIR . '/cache');
 		ini_set('session.save_path', TEMP_DIR);
 
@@ -90,10 +94,6 @@ class Environment
 		self::mkdir(TEMP_DIR);
 		self::mkdir(CACHE_DIR);
 		self::purge(TEMP_DIR);
-
-		register_shutdown_function(function () {
-			self::rmdir(TEMP_DIR);
-		});
 	}
 
 	/**
@@ -158,10 +158,10 @@ class Environment
 	 */
 	public static function mkdir($dir, $mask = 0777, $recursive = TRUE)
 	{
-		if (!is_dir($dir)) {
-			if (@mkdir($dir, $mask, $recursive) === FALSE) {
+		if (!is_dir($dir) && @mkdir($dir, $mask, $recursive) === FALSE) {
+			if (!is_dir($dir)) {
 				die('Cannot create ' . $dir);
-			};
+			}
 		}
 	}
 
@@ -182,6 +182,9 @@ class Environment
 	 */
 	private static function purge($dir)
 	{
+		if (!is_dir($dir)) {
+			self::mkdir($dir);
+		}
 		THelpers::purge($dir);
 	}
 
