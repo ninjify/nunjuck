@@ -82,14 +82,19 @@ class Environment
 
 		// Temp, cache directories
 		define('TMP_DIR', TESTER_DIR . '/tmp');
-		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid());
+		define('TEMP_DIR', TMP_DIR . '/tests/' . lcg_value());
 		define('CACHE_DIR', TMP_DIR . '/cache');
 		ini_set('session.save_path', TEMP_DIR);
 
 		// Create folders
-		self::mkdir(dirname(TEMP_DIR));
+		self::mkdir(TEMP_DIR);
 		self::mkdir(CACHE_DIR);
 		self::purge(TEMP_DIR);
+
+		register_shutdown_function(function () {
+			self::purge(TMP_DIR);
+			@rmdir(TMP_DIR);
+		});
 	}
 
 	/**
