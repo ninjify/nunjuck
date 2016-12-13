@@ -33,7 +33,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Ninjify\\Tester\\": "src"
+      "Ninjify\\Nunjuck\\": "src"
     }
   },
   "scripts": {
