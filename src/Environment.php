@@ -67,6 +67,8 @@ class Environment
 	 */
 	public static function setupVariables($testerDir)
 	{
+		clearstatcache();
+
 		if (!is_dir($testerDir)) {
 			die(sprintf('Provide existing folder, "%s" does not exist.', $testerDir));
 		}
@@ -86,7 +88,7 @@ class Environment
 
 		// Temp, cache directories
 		define('TMP_DIR', TESTER_DIR . '/tmp');
-		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '/' . uniqid(microtime(TRUE), TRUE) . 'x' . lcg_value());
+		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '/' . md5(uniqid(microtime(TRUE), TRUE) . lcg_value() . mt_rand(0, 20) . microtime()));
 		define('CACHE_DIR', TMP_DIR . '/cache');
 		ini_set('session.save_path', TEMP_DIR);
 
@@ -156,11 +158,13 @@ class Environment
 	 * @param bool $recursive
 	 * @return void
 	 */
-	public static function mkdir($dir, $mask = 0777, $recursive = TRUE)
+	public static function mkdir($dir, $mode = 0777, $recursive = TRUE)
 	{
-		if (!is_dir($dir) && @mkdir($dir, $mask, $recursive) === FALSE) {
+		clearstatcache();
+		if (!is_dir($dir) && !@mkdir($dir, $mode, $recursive)) { // @ - dir may already exist
+			$error = error_get_last();
 			if (!is_dir($dir)) {
-				die('Cannot create ' . $dir);
+				throw new RuntimeException("Unable to create directory '$dir'. " . $error['message']);
 			}
 		}
 	}
