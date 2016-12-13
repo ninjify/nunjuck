@@ -92,8 +92,7 @@ class Environment
 		self::purge(TEMP_DIR);
 
 		register_shutdown_function(function () {
-			self::purge(TMP_DIR);
-			@rmdir(TMP_DIR);
+			self::rmdir(TEMP_DIR);
 		});
 	}
 
@@ -164,6 +163,17 @@ class Environment
 				die('Cannot create ' . $dir);
 			};
 		}
+	}
+
+	/**
+	 * @param string $dir
+	 * @return void
+	 */
+	public static function rmdir($dir)
+	{
+		if (!is_dir($dir)) return;
+		self::purge($dir);
+		@rmdir($dir);
 	}
 
 	/**
