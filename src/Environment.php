@@ -168,7 +168,7 @@ class Environment
 			clearstatcache(TRUE, $dir);
 			$error = error_get_last();
 			if (is_dir($dir) === FALSE && !file_exists($dir) === FALSE) {
-				throw new RuntimeException("Unable to create directory '$dir'. " . $error['message']);
+				throw new RuntimeException(sprintf("Unable to create directory '%s'. " . $error['message'], $dir));
 			}
 		}
 	}
