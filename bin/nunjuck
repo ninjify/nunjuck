@@ -4,4 +4,4 @@
 DIR=${0%/*}
 
 # Call nette tester
-${DIR}/tester --colors --setup ${DIR}/nunjuck-setup $@
+${DIR}/tester --colors -j 40 --setup ${DIR}/nunjuck-setup $@
