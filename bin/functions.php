@@ -11,41 +11,49 @@ use Mockista\Registry;
  * *****************************************************************************
  */
 
-/**
- * @param Closure $function
- * @return void
- */
-function test(Closure $function)
-{
-	$function();
+if (!function_exists('test')) {
+	/**
+	 * @param Closure $function
+	 * @return void
+	 */
+	function test(Closure $function)
+	{
+		$function();
+	}
 }
 
-/**
- * @param string $class
- * @param array $defaults
- * @return Mock
- */
-function mocki($class = NULL, array $defaults = [])
-{
-	$builder = new MockBuilder($class, $defaults);
+if (!function_exists('mocki')) {
+	/**
+	 * @param string $class
+	 * @param array $defaults
+	 * @return Mock
+	 */
+	function mocki($class = NULL, array $defaults = [])
+	{
+		$builder = new MockBuilder($class, $defaults);
 
-	return $builder->getMock();
+		return $builder->getMock();
+	}
 }
 
-/**
- * @param string $class
- * @param array $methods
- * @return MockInterface
- */
-function mockis($class = NULL, array $methods = [])
-{
-	return (mockisr()->create($class, $methods));
+if (!function_exists('mockis')) {
+	/**
+	 * @param string $class
+	 * @param array $methods
+	 * @return MockInterface
+	 */
+	function mockis($class = NULL, array $methods = [])
+	{
+		return (mockisr()->create($class, $methods));
+	}
 }
 
-/**
- * @return Registry
- */
-function mockisr()
-{
-	return new Registry();
+if (!function_exists('mockisr')) {
+	/**
+	 * @return Registry
+	 */
+	function mockisr()
+	{
+		return new Registry();
+	}
 }
