@@ -48,6 +48,15 @@ There are many predefined test cases.
 - `BaseMockistaTestCase` + `TMockistaTestCase`
 - `BaseContainerTestCase` + `TContainerTestCase`
 
+### Toolkit
+
+`Toolkit` is class for handling anonymous tests functions.
+
+- `Toolkit::setUp(function() { ... })` is called before test function.
+- `Toolkit::tearDown(function() { ... })` is after before test function.
+- `Toolkit::bind($object)` binds new context into test function, you can access `$this->` inside.
+- `Toolkit::test(function() { ... })` triggers test function.
+
 ### Notes
 
 Little helper to your tests.
