@@ -1,5 +1,8 @@
-<?php
+<?php declare(strict_types = 1);
 
+namespace Ninjify\Nunjuck;
+
+use Closure;
 use Mockista\Mock;
 use Mockista\MockBuilder;
 use Mockista\MockInterface;
@@ -12,23 +15,19 @@ use Mockista\Registry;
  */
 
 if (!function_exists('test')) {
-	/**
-	 * @param Closure $function
-	 * @return void
-	 */
-	function test(Closure $function)
+
+	function test(Closure $function): void
 	{
 		$function();
 	}
 }
 
 if (!function_exists('mocki')) {
+
 	/**
-	 * @param string $class
-	 * @param array $defaults
-	 * @return Mock
+	 * @param mixed[] $defaults
 	 */
-	function mocki($class = NULL, array $defaults = [])
+	function mocki(?string $class = null, array $defaults = []): Mock
 	{
 		$builder = new MockBuilder($class, $defaults);
 
@@ -37,22 +36,19 @@ if (!function_exists('mocki')) {
 }
 
 if (!function_exists('mockis')) {
+
 	/**
-	 * @param string $class
-	 * @param array $methods
-	 * @return MockInterface
+	 * @param mixed[] $methods
 	 */
-	function mockis($class = NULL, array $methods = [])
+	function mockis(?string $class = null, array $methods = []): MockInterface
 	{
-		return (mockisr()->create($class, $methods));
+		return mockisr()->create($class, $methods);
 	}
 }
 
 if (!function_exists('mockisr')) {
-	/**
-	 * @return Registry
-	 */
-	function mockisr()
+
+	function mockisr(): Registry
 	{
 		return new Registry();
 	}

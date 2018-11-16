@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Tests;
 
@@ -15,43 +15,37 @@ require_once __DIR__ . '/../bootstrap.php';
 class BindClass
 {
 
-	/**
-	 * @return void
-	 */
-	public function call1()
+	public function call1(): void
 	{
 		Notes::add('CALL1');
 	}
 
-	/**
-	 * @return void
-	 */
-	protected function call2()
+	protected function call2(): void
 	{
 		Notes::add('CALL2');
 	}
 
 }
 
-Toolkit::setUp(function () {
+Toolkit::setUp(function (): void {
 	Notes::add('SETUP1');
 });
 
-Toolkit::setUp(function () {
+Toolkit::setUp(function (): void {
 	Notes::add('SETUP2');
 });
 
-Toolkit::tearDown(function () {
+Toolkit::tearDown(function (): void {
 	Notes::add('DOWN1');
 });
 
-Toolkit::tearDown(function () {
+Toolkit::tearDown(function (): void {
 	Notes::add('DOWN2');
 });
 
 Toolkit::bind(new BindClass());
 
-Toolkit::test(function () {
+Toolkit::test(function (): void {
 	$this->call1();
 	Notes::add('INNER');
 	$this->call2();
