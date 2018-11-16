@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Ninjify\Nunjuck\TestCase;
 
@@ -12,10 +12,8 @@ trait TMockistaTestCase
 
 	/**
 	 * This method is called before a test is executed.
-	 *
-	 * @return void
 	 */
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 		$this->mockista = new Registry();
@@ -23,10 +21,8 @@ trait TMockistaTestCase
 
 	/**
 	 * This method is called after a test is executed.
-	 *
-	 * @return void
 	 */
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		parent::tearDown();
 		$this->mockista->assertExpectations();

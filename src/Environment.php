@@ -1,8 +1,7 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Ninjify\Nunjuck;
 
-use Nette\Caching\Storages\FileStorage;
 use Nette\Loaders\RobotLoader;
 use RuntimeException;
 use Tester\Environment as TEnvironment;
@@ -11,27 +10,24 @@ use Tester\Helpers as THelpers;
 class Environment
 {
 
-	const TESTER_DIR = 'TESTER_DIR';
-	const APP_DIR = 'APP_DIR';
-	const WWW_DIR = 'WWW_DIR';
-	const ENGINE_DIR = 'ENGINE_DIR';
-	const CASES_DIR = 'CASES_DIR';
-	const CASES_UNIT_DIR = 'CASES_UNIT_DIR';
-	const CASES_INTEGRATION_DIR = 'CASES_INTEGRATION_DIR';
-	const CASES_END_TO_END = 'CASES_END_TO_END';
-	const CASES_E2E = 'CASES_E2E';
-	const CASES_FRONTEND = 'CASES_FRONTEND';
-	const TMP_DIR = 'TMP_DIR';
-	const TEMP_DIR = 'TEMP_DIR';
-	const CACHE_DIR = 'CACHE_DIR';
+	public const TESTER_DIR = 'TESTER_DIR';
+	public const APP_DIR = 'APP_DIR';
+	public const WWW_DIR = 'WWW_DIR';
+	public const ENGINE_DIR = 'ENGINE_DIR';
+	public const CASES_DIR = 'CASES_DIR';
+	public const CASES_UNIT_DIR = 'CASES_UNIT_DIR';
+	public const CASES_INTEGRATION_DIR = 'CASES_INTEGRATION_DIR';
+	public const CASES_END_TO_END = 'CASES_END_TO_END';
+	public const CASES_E2E = 'CASES_E2E';
+	public const CASES_FRONTEND = 'CASES_FRONTEND';
+	public const TMP_DIR = 'TMP_DIR';
+	public const TEMP_DIR = 'TEMP_DIR';
+	public const CACHE_DIR = 'CACHE_DIR';
 
 	/**
 	 * Magic setup method
-	 *
-	 * @param string $dir
-	 * @return void
 	 */
-	public static function setup($dir)
+	public static function setup(string $dir): void
 	{
 		self::setupTester();
 		self::setupTimezone();
@@ -41,32 +37,24 @@ class Environment
 
 	/**
 	 * Configure environment
-	 *
-	 * @return void
 	 */
-	public static function setupTester()
+	public static function setupTester(): void
 	{
 		TEnvironment::setup();
 	}
 
 	/**
 	 * Configure timezone
-	 *
-	 * @param string $timezone
-	 * @return void
 	 */
-	public static function setupTimezone($timezone = 'Europe/Prague')
+	public static function setupTimezone(string $timezone = 'Europe/Prague'): void
 	{
 		date_default_timezone_set($timezone);
 	}
 
 	/**
 	 * Configure variables
-	 *
-	 * @param string $testerDir
-	 * @return void
 	 */
-	public static function setupVariables($testerDir)
+	public static function setupVariables(string $testerDir): void
 	{
 		if (!is_dir($testerDir)) {
 			die(sprintf('Provide existing folder, "%s" does not exist.', $testerDir));
@@ -87,37 +75,33 @@ class Environment
 
 		// Temp, cache directories
 		define('TMP_DIR', TESTER_DIR . '/tmp');
-		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '/' . md5(uniqid(microtime(TRUE), TRUE) . lcg_value() . mt_rand(0, 20) . microtime()));
+		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '/' . md5(uniqid((string) microtime(true), true) . lcg_value() . mt_rand(0, 20) . microtime()));
 		define('CACHE_DIR', TMP_DIR . '/cache');
 		ini_set('session.save_path', TEMP_DIR);
 
 		// Create folders
-		clearstatcache(TRUE, TMP_DIR);
+		clearstatcache(true, TMP_DIR);
 		self::mkdir(TMP_DIR);
-		clearstatcache(TRUE, CACHE_DIR);
+		clearstatcache(true, CACHE_DIR);
 		self::mkdir(CACHE_DIR);
-		clearstatcache(TRUE, TEMP_DIR);
+		clearstatcache(true, TEMP_DIR);
 		self::mkdir(TEMP_DIR);
-		clearstatcache(TRUE, TEMP_DIR);
+		clearstatcache(true, TEMP_DIR);
 		self::purge(TEMP_DIR);
 	}
 
 	/**
-	 * @param string $variable
 	 * @param mixed $value
-	 * @return void
 	 */
-	public static function setupVariable($variable, $value)
+	public static function setupVariable(string $variable, $value): void
 	{
 		define($variable, $value);
 	}
 
 	/**
 	 * Configure global variables
-	 *
-	 * @return void
 	 */
-	public static function setupGlobalVariables()
+	public static function setupGlobalVariables(): void
 	{
 		$_SERVER = array_intersect_key($_SERVER, array_flip([
 			'PHP_SELF',
@@ -136,59 +120,42 @@ class Environment
 
 	/**
 	 * Configure robot loader
-	 *
-	 * @param callable $callback
-	 * @return void
 	 */
-	public static function setupRobotLoader(callable $callback = NULL)
+	public static function setupRobotLoader(?callable $callback = null): void
 	{
 		$loader = new RobotLoader();
-		$loader->setCacheStorage(new FileStorage(CACHE_DIR));
+		$loader->setTempDirectory(CACHE_DIR);
 
-		if ($callback) {
+		if ($callback !== null) {
 			$callback($loader);
 		} else {
 			$loader->addDirectory(ENGINE_DIR);
 			$loader->addDirectory(APP_DIR);
-			$loader->autoRebuild = TRUE;
+			$loader->setAutoRefresh(true);
 		}
 
 		$loader->register();
 	}
 
-	/**
-	 * @param string $dir
-	 * @param int $mode
-	 * @param bool $recursive
-	 * @return void
-	 */
-	public static function mkdir($dir, $mode = 0777, $recursive = TRUE)
+	public static function mkdir(string $dir, int $mode = 0777, bool $recursive = true): void
 	{
-		if (is_dir($dir) === FALSE && @mkdir($dir, $mode, $recursive) === FALSE) {
-			clearstatcache(TRUE, $dir);
+		if (is_dir($dir) === false && @mkdir($dir, $mode, $recursive) === false) {
+			clearstatcache(true, $dir);
 			$error = error_get_last();
-			if (is_dir($dir) === FALSE && !file_exists($dir) === FALSE) {
+			if (is_dir($dir) === false && !file_exists($dir) === false) {
 				throw new RuntimeException(sprintf("Unable to create directory '%s'. " . $error['message'], $dir));
 			}
 		}
 	}
 
-	/**
-	 * @param string $dir
-	 * @return void
-	 */
-	public static function rmdir($dir)
+	public static function rmdir(string $dir): void
 	{
 		if (!is_dir($dir)) return;
 		self::purge($dir);
 		@rmdir($dir);
 	}
 
-	/**
-	 * @param string $dir
-	 * @return void
-	 */
-	private static function purge($dir)
+	private static function purge(string $dir): void
 	{
 		if (!is_dir($dir)) self::mkdir($dir);
 		THelpers::purge($dir);

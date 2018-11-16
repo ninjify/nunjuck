@@ -1,39 +1,32 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Ninjify\Nunjuck;
 
 final class Notes
 {
 
-    /** @var array */
-    public static $notes = [];
+	/** @var string[] */
+	public static $notes = [];
 
-    /**
-     * @param string $message
-     * @return void
-     */
-    public static function add($message)
-    {
-        self::$notes[] = $message;
-    }
+	public static function add(string $message): void
+	{
+		self::$notes[] = $message;
+	}
 
-    /**
-     * @return void
-     */
-    public static function clear()
-    {
-        self::$notes = [];
-    }
+	public static function clear(): void
+	{
+		self::$notes = [];
+	}
 
-    /**
-     * @return array
-     */
-    public static function fetch()
-    {
-        $res = self::$notes;
-        self::$notes = [];
+	/**
+	 * @return string[]
+	 */
+	public static function fetch(): array
+	{
+		$res = self::$notes;
+		self::$notes = [];
 
-        return $res;
-    }
+		return $res;
+	}
 
 }

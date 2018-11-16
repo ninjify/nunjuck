@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Ninjify\Nunjuck\TestCase;
 
@@ -13,10 +13,8 @@ trait TMockeryTestCase
 
 	/**
 	 * This method is called before a test is executed.
-	 *
-	 * @return void
 	 */
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 		$this->mockery = Mockery::getContainer();
@@ -24,10 +22,8 @@ trait TMockeryTestCase
 
 	/**
 	 * This method is called after a test is executed.
-	 *
-	 * @return void
 	 */
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		parent::tearDown();
 		$this->mockery->mockery_verify();

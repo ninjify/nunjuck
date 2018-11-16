@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Ninjify\Nunjuck;
 
@@ -7,7 +7,7 @@ use Closure;
 class Toolkit
 {
 
-	/** @var mixed */
+	/** @var object|null */
 	private static $bind;
 
 	/** @var callable[] */
@@ -17,39 +17,28 @@ class Toolkit
 	private static $tearDown = [];
 
 	/**
-	 * @param mixed $object
-	 * @return void
+	 * @param object $object
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public static function bind($object)
+	public static function bind($object): void
 	{
 		self::$bind = $object;
 	}
 
-	/**
-	 * @param callable $function
-	 * @return void
-	 */
-	public static function setUp(callable $function)
+	public static function setUp(callable $function): void
 	{
 		self::$setUp[] = $function;
 	}
 
-	/**
-	 * @param callable $function
-	 * @return void
-	 */
-	public static function tearDown(callable $function)
+	public static function tearDown(callable $function): void
 	{
 		self::$tearDown[] = $function;
 	}
 
-	/**
-	 * @param callable $function
-	 * @return void
-	 */
-	public static function test(callable $function)
+	public static function test(callable $function): void
 	{
-		if (self::$bind) {
+		if (self::$bind !== null) {
+			if (!$function instanceof Closure) $function = Closure::fromCallable($function);
 			$function = Closure::bind($function, self::$bind, self::$bind);
 		}
 

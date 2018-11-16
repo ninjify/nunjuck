@@ -5,9 +5,12 @@ Special tuned [nette/tester](https://github.com/nette/tester) for your PHP proje
 -----
 
 [![Build Status](https://img.shields.io/travis/ninjify/nunjuck.svg?style=flat-square)](https://travis-ci.org/ninjify/nunjuck)
+[![Code coverage](https://img.shields.io/coveralls/ninjify/nunjuck.svg?style=flat-square)](https://coveralls.io/r/ninjify/nunjuck)
+[![Licence](https://img.shields.io/packagist/l/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
+[![Downloads this Month](https://img.shields.io/packagist/dm/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
 [![Downloads total](https://img.shields.io/packagist/dt/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
 [![Latest stable](https://img.shields.io/packagist/v/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
-[![Licence](https://img.shields.io/packagist/l/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 
 ## Install
 

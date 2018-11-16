@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Ninjify\Nunjuck\TestCase\Nette;
 
@@ -10,23 +10,16 @@ trait TContainerTestCase
 	/** @var Container */
 	protected $container;
 
-	/**
-	 * @param Container $container
-	 */
 	public function __construct(Container $container)
 	{
 		$this->container = $container;
 	}
 
 	/**
-	 * CONTAINER ***************************************************************
+	 * @return object|null
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint
 	 */
-
-	/**
-	 * @param string $class
-	 * @return object
-	 */
-	protected function getService($class)
+	protected function getService(string $class)
 	{
 		return $this->container->getByType($class);
 	}
