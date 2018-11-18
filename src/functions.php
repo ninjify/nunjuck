@@ -1,8 +1,5 @@
 <?php declare(strict_types = 1);
 
-namespace Ninjify\Nunjuck;
-
-use Closure;
 use Mockista\Mock;
 use Mockista\MockBuilder;
 use Mockista\MockInterface;
