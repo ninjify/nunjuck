@@ -49,6 +49,7 @@ class BetterConsolePrinter extends ConsolePrinter
 	{
 		if ($message !== '') {
 			$result = '';
+
 			foreach (explode(PHP_EOL, $message) as $line) {
 				$result .= str_repeat(' ', $spaces) . $line . PHP_EOL;
 			}
