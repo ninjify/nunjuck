@@ -38,7 +38,9 @@ class Toolkit
 	public static function test(callable $function): void
 	{
 		if (self::$bind !== null) {
-			if (!$function instanceof Closure) $function = Closure::fromCallable($function);
+			if (!$function instanceof Closure) {
+				$function = Closure::fromCallable($function);
+			}
 			$function = Closure::bind($function, self::$bind, self::$bind);
 		}
 
