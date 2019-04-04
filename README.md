@@ -18,6 +18,13 @@ Special tuned [nette/tester](https://github.com/nette/tester) for your PHP proje
 composer require --dev ninjify/nunjuck
 ```
 
+## Versions
+
+| State       | Version      | Branch   | PHP      |
+|-------------|--------------|----------|----------|
+| dev         | `^0.3.0`     | `master` | `>= 7.1` |
+| stable      | `^0.2.1`     | `master` | `>= 7.1` |
+
 ## Usage
 
 ### Environment
