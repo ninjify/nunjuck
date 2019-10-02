@@ -17,10 +17,10 @@
   ],
   "require": {
     "php": ">=7.1",
-    "nette/tester": "^2.2"
+    "nette/tester": "^2.3"
   },
   "require-dev": {
-    "ninjify/qa": "^0.9",
+    "ninjify/qa": "^0.10",
     "mockery/mockery": "^1.2.2",
     "janmarek/mockista": "^1.1.0",
     "nette/di": "~2.4.15",
