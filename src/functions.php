@@ -17,6 +17,7 @@ if (!function_exists('test')) {
 	{
 		$function();
 	}
+
 }
 
 if (!function_exists('mocki')) {
@@ -30,6 +31,7 @@ if (!function_exists('mocki')) {
 
 		return $builder->getMock();
 	}
+
 }
 
 if (!function_exists('mockis')) {
@@ -41,6 +43,7 @@ if (!function_exists('mockis')) {
 	{
 		return mockisr()->create($class, $methods);
 	}
+
 }
 
 if (!function_exists('mockisr')) {
@@ -49,4 +52,5 @@ if (!function_exists('mockisr')) {
 	{
 		return new Registry();
 	}
+
 }
