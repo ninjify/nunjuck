@@ -41,6 +41,7 @@ class Toolkit
 			if (!$function instanceof Closure) {
 				$function = Closure::fromCallable($function);
 			}
+
 			$function = Closure::bind($function, self::$bind, self::$bind);
 		}
 
