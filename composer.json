@@ -20,11 +20,11 @@
     "nette/tester": "^2.3.4"
   },
   "require-dev": {
-    "ninjify/qa": "^0.10",
+    "ninjify/qa": "^0.12",
     "mockery/mockery": "^1.2.2",
     "janmarek/mockista": "^1.1.0",
-    "nette/di": "~2.4.15",
-    "nette/robot-loader": "~3.2.0",
+    "nette/di": "~3.0.0",
+    "nette/robot-loader": "~3.2",
     "phpstan/phpstan": "^0.12",
     "phpstan/phpstan-deprecation-rules": "^0.12",
     "phpstan/phpstan-nette": "^0.12",
