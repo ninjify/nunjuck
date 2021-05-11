@@ -1,20 +1,28 @@
-# Nunjuck :muscle: (Nette/Tester) [QA] 
+![](https://heatbadger.now.sh/github/readme/ninjify/nunjuck/)
 
-Special tuned [nette/tester](https://github.com/nette/tester) for your PHP projects.
+<p align=center>
+  <a href="https://github.com/ninjify/nunjuck/actions"><img src="https://badgen.net/github/checks/ninjify/nunjuck/master?cache=300"></a>
+  <a href="https://coveralls.io/r/ninjify/nunjuck"><img src="https://badgen.net/coveralls/c/github/ninjify/nunjuck?cache=300"></a>
+  <a href="https://packagist.org/packages/ninjify/nunjuck"><img src="https://badgen.net/packagist/dm/ninjify/nunjuck"></a>
+  <a href="https://packagist.org/packages/ninjify/nunjuck"><img src="https://badgen.net/packagist/v/ninjify/nunjuck"></a>
+</p>
+<p align=center>
+  <a href="https://packagist.org/packages/ninjify/nunjuck"><img src="https://badgen.net/packagist/php/ninjify/nunjuck"></a>
+  <a href="https://github.com/ninjify/nunjuck"><img src="https://badgen.net/github/license/ninjify/nunjuck"></a>
+  <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
+  <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
+  <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
+</p>
 
------
+<p align=center>
+Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
+</p>
 
-[![Build Status](https://img.shields.io/travis/ninjify/nunjuck.svg?style=flat-square)](https://travis-ci.org/ninjify/nunjuck)
-[![Code coverage](https://img.shields.io/coveralls/ninjify/nunjuck.svg?style=flat-square)](https://coveralls.io/r/ninjify/nunjuck)
-[![Licence](https://img.shields.io/packagist/l/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
-[![Downloads this Month](https://img.shields.io/packagist/dm/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
-[![Downloads total](https://img.shields.io/packagist/dt/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
-[![Latest stable](https://img.shields.io/packagist/v/ninjify/nunjuck.svg?style=flat-square)](https://packagist.org/packages/ninjify/nunjuck)
-[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
+## Usage
 
-## Install
+To install latest version of `ninjify/nunjuck` use [Composer](https://getcomposer.com).
 
-```bash
+```
 composer require --dev ninjify/nunjuck
 ```
 
@@ -25,7 +33,7 @@ composer require --dev ninjify/nunjuck
 | dev         | `^0.3.0`     | `master` | `>= 7.1` |
 | stable      | `^0.2.1`     | `master` | `>= 7.1` |
 
-## Usage
+## Documentation
 
 ### Environment
 
@@ -77,11 +85,21 @@ use Ninjify\Nunjuck\Notes;
 Notes::add('My note');
 
 # ['My note']
-$notes = Notes::fetch(); 
+$notes = Notes::fetch();
 
 Notes::clear();
 ```
 
----------------
 
-Thanks for testing, reporting and contributing.
+## Development
+
+See [how to contribute](https://contributte.org) to this package. This package is currently maintained by these authors.
+
+<a href="https://github.com/f3l1x">
+    <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
+</a>
+
+-----
+
+Consider to [support](https://contributte.org/partners.html) **contributte** development team.
+Also thank you for using this package.
