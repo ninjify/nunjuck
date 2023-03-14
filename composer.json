@@ -17,7 +17,7 @@
   ],
   "require": {
     "php": ">=7.2",
-    "nette/tester": "^2.3.4"
+    "nette/tester": "^2.4.3"
   },
   "require-dev": {
     "ninjify/qa": "^0.12",
