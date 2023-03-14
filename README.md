@@ -30,8 +30,8 @@ composer require --dev ninjify/nunjuck
 
 | State       | Version      | Branch   | PHP      |
 |-------------|--------------|----------|----------|
-| dev         | `^0.3.0`     | `master` | `>= 7.1` |
-| stable      | `^0.2.1`     | `master` | `>= 7.1` |
+| dev         | `^0.5.0`     | `master` | `>= 7.1` |
+| stable      | `^0.4.0`     | `master` | `>= 7.1` |
 
 ## Documentation
 
