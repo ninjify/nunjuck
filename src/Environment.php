@@ -75,7 +75,7 @@ class Environment
 
 		// Temp, cache directories
 		define('TMP_DIR', TESTER_DIR . '/tmp');
-		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '/' . md5(uniqid((string) microtime(true), true) . lcg_value() . mt_rand(0, 20) . microtime()));
+		define('TEMP_DIR', TMP_DIR . '/tests/' . getmypid() . '/' . md5(uniqid((string) microtime(true), true) . bin2hex(random_bytes(8)) . mt_rand(0, 20) . microtime()));
 		define('CACHE_DIR', TMP_DIR . '/cache');
 		ini_set('session.save_path', TEMP_DIR);
 
